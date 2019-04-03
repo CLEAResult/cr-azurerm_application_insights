@@ -14,7 +14,7 @@ variable "rgid" {
   default = "99999"
 }
 
-variable "rgid" {
+variable "rg_name" {
   default = "somegroup"
 }
 
