@@ -19,7 +19,7 @@ variable "rg_name" {
 }
 
 module "rg" {
-  source = "git::ssh://git@github.com/clearesult/cr-azurerm_resource_group.git"
+  source = "git::ssh://git@github.com/clearesult/cr-azurerm_application_insights.git"
   rgid = "${var.rgid}"
   rg_name = "${var.rg_name}"
 }
