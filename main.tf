@@ -9,4 +9,7 @@ resource "azurerm_application_insights" "appinsights" {
       "tags"
     ]
   }
+  tags {
+    InfrastructureAsCode = "True"
+  }
 }
