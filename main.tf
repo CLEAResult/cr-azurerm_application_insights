@@ -1,6 +1,6 @@
 resource "azurerm_application_insights" "appinsights" {
-  count               = "${var.count != "" ? var.count : "1"}"
-  name                = "${local.name}${format("%3d", count.index)}"
+  name                = "${local.name}${format("%03d", count.index + 1)}"
+  count               = "${var.count}"
   location            = "eastus"
   resource_group_name = "${var.rg_name}"
   application_type    = "Web"
