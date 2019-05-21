@@ -17,7 +17,7 @@ resource "azurerm_application_insights" "appinsights" {
 }
 
 resource "azuread_group" "applicationinsightscomponentcontributor" {
-    name = "g${local.default_rgid}${local.env_id}${local.rg_type}_ApplicationInsightsComponentContributor"
+    name = "g${local.default_rgid}${local.env_id}${local.rg_type}_AZ_ApplicationInsightsComponentContributor"
 }
 
 resource "azurerm_role_assignment" "applicationinsightscomponentcontributor" {
