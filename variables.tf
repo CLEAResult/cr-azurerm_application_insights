@@ -7,7 +7,7 @@ variable "location" {
   description = "Location for resources to be created"
 }
 
-variable "count" {
+variable "num" {
   default = "1"
 }
 
@@ -31,19 +31,24 @@ variable "subscription_id" {
 
 # Compute default name values
 locals {
-  env_id = "${lookup(module.naming.env-map, var.environment, "ENV")}"
-  type   = "${lookup(module.naming.type-map, "azurerm_application_insights", "TYP")}"
+  env_id = lookup(module.naming.env-map, var.environment, "env")
+  type = lookup(
+    module.naming.type-map,
+    "azurerm_application_insights",
+    "typ",
+  )
 
-  rg_type = "${lookup(module.naming.type-map, "azurerm_resource_group", "TYP")}"
+  rg_type = lookup(module.naming.type-map, "azurerm_resource_group", "typ")
 
-  default_rgid        = "${var.rgid != "" ? var.rgid : "NORGID"}"
-  default_name_prefix = "c${local.default_rgid}${local.env_id}"
+  default_rgid        = var.rgid != "" ? var.rgid : "norgid"
+  default_name_prefix = format("c%s%s", local.default_rgid, local.env_id)
 
-  name_prefix = "${var.name_prefix != "" ? var.name_prefix : local.default_name_prefix}"
-  name        = "${local.name_prefix}${local.type}"
+  name_prefix = var.name_prefix != "" ? var.name_prefix : local.default_name_prefix
+  name        = format("%s%s", local.name_prefix, local.type)
 }
 
 # This module provides a data map output to lookup naming standard references
 module "naming" {
   source = "git::https://github.com/CLEAResult/cr-azurerm-naming.git?ref=v1.1.0"
 }
+
