@@ -1,0 +1,6 @@
+environment     = "test"
+location        = "eastus"
+rgid            = "99999"
+create_date     = "20301031"
+tenant_id       = "ADD_TENANT_ID_TO_TEST"
+subscription_id = "ADD_SUBSCRIPTION_ID_TO_TEST"
